@@ -3,11 +3,14 @@ from keras.models import Sequential
 from keras.layers import Conv2D, MaxPooling2D
 from keras.layers import Activation, Dropout, Flatten, Dense
 from keras import backend as K
+import os
 
 img_width, img_height = 224, 224
 
-train_data_dir = '/media/mingrui/DATA/datasets/201801-IDH-jpeg-train'
-validation_data_dir = '/media/mingrui/DATA/datasets/201801-IDH-jpeg-validation'
+data_root_dir = '/media/mingrui/DATA/datasets/'
+
+train_data_dir = os.path.join(data_root_dir, '201801-IDH-jpeg-train')
+validation_data_dir = os.path.join(data_root_dir, '201801-IDH-jpeg-validation')
 nb_train_samples = 5000
 nb_validation_samples = 700
 epochs = 100
