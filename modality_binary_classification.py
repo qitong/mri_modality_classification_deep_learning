@@ -5,9 +5,12 @@ from keras.layers import Activation, Dropout, Flatten, Dense
 from keras import backend as K
 import os
 
+from tensorflow.python.client import device_lib
+print(device_lib.list_local_devices())
+
 img_width, img_height = 224, 224
 
-data_root_dir = '/media/mingrui/DATA/datasets/'
+data_root_dir = '/media/brainteam/hdd1/201801-IDH'
 
 train_data_dir = os.path.join(data_root_dir, '201801-IDH-jpeg-train')
 validation_data_dir = os.path.join(data_root_dir, '201801-IDH-jpeg-validation')
