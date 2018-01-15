@@ -3,6 +3,7 @@ from keras.models import Sequential
 from keras.layers import Conv2D, MaxPooling2D
 from keras.layers import Activation, Dropout, Flatten, Dense
 from keras import backend as K
+import keras.optimizers
 import os
 
 from tensorflow.python.client import device_lib
@@ -10,6 +11,7 @@ print(device_lib.list_local_devices())
 
 img_width, img_height = 224, 224
 
+#data_root_dir = '/media/mingrui/DATA/datasets'
 data_root_dir = '/media/brainteam/hdd1/201801-IDH'
 
 train_data_dir = os.path.join(data_root_dir, '201801-IDH-jpeg-train')
@@ -18,6 +20,8 @@ nb_train_samples = 5000
 nb_validation_samples = 700
 epochs = 1000
 batch_size = 16
+
+opt = keras.optimizers.Adam(lr=0.01, beta_1=0.9, beta_2=0.999, epsilon=1e-08, decay=0.0)
 
 def train():
     if K.image_data_format() == 'channels_first':
@@ -47,7 +51,7 @@ def train():
 
     model.compile(
         loss='categorical_crossentropy',
-        optimizer='rmsprop',
+        optimizer=opt,
         metrics=['accuracy']
     )
 
