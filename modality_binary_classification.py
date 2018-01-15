@@ -13,7 +13,7 @@ train_data_dir = os.path.join(data_root_dir, '201801-IDH-jpeg-train')
 validation_data_dir = os.path.join(data_root_dir, '201801-IDH-jpeg-validation')
 nb_train_samples = 5000
 nb_validation_samples = 700
-epochs = 100
+epochs = 1000
 batch_size = 16
 
 def train():
