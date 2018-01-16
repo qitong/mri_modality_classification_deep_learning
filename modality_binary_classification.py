@@ -1,3 +1,11 @@
+from numpy.random import seed
+seed(1)
+from tensorflow import set_random_seed
+set_random_seed(2)
+
+from tensorflow.python.client import device_lib
+print(device_lib.list_local_devices())
+
 from keras.preprocessing.image import ImageDataGenerator
 from keras.models import Sequential
 from keras.layers import Conv2D, MaxPooling2D
@@ -5,9 +13,6 @@ from keras.layers import Activation, Dropout, Flatten, Dense
 from keras import backend as K
 import keras.optimizers
 import os
-
-from tensorflow.python.client import device_lib
-print(device_lib.list_local_devices())
 
 img_width, img_height = 224, 224
 
@@ -18,7 +23,7 @@ train_data_dir = os.path.join(data_root_dir, '201801-IDH-jpeg-train')
 validation_data_dir = os.path.join(data_root_dir, '201801-IDH-jpeg-validation')
 nb_train_samples = 5000
 nb_validation_samples = 700
-epochs = 1000
+epochs = 500
 batch_size = 16
 
 opt = keras.optimizers.Adam(lr=0.01, beta_1=0.9, beta_2=0.999, epsilon=1e-08, decay=0.0)
