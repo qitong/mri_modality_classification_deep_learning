@@ -10,11 +10,17 @@ Automate!
 My folder structure:
 
 --- jpeg_train
+
   |--- T1
+  
   |--- T2
+  
   |--- CE
+  
   |--- ADC
+  
   |--- DWI
+  
 --- jpeg_validation
   |--- T1
   |--- T2
