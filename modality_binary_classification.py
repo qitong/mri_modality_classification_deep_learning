@@ -13,19 +13,23 @@ import os
 
 img_width, img_height = 224, 224
 
-#data_root_dir = '/media/mingrui/DATA/datasets'
-data_root_dir = '/media/brainteam/hdd1/201801-IDH'
+data_root_dir = '/media/mingrui/DATA/datasets'
+#data_root_dir = '/media/brainteam/hdd1/201801-IDH'
 
 train_data_dir = os.path.join(data_root_dir, '201801-IDH-jpeg-train')
 validation_data_dir = os.path.join(data_root_dir, '201801-IDH-jpeg-validation')
-nb_train_samples = 5000
-nb_validation_samples = 700
-epochs = 500
-batch_size = 16
-
-opt = keras.optimizers.Adam(lr=0.01, beta_1=0.9, beta_2=0.999, epsilon=1e-08, decay=0.0)
 
 def train():
+    nb_train_samples = 5000
+    nb_validation_samples = 700
+    epochs = 500
+    batch_size = 16
+    learning_rate = 0.001
+
+    decay_rate = learning_rate / epochs
+
+    opt = keras.optimizers.Adam(lr=learning_rate, beta_1=0.9, beta_2=0.999, epsilon=1e-08, decay=decay_rate)
+
     if K.image_data_format() == 'channels_first':
         input_shape = (3, img_width, img_height)
     else:
