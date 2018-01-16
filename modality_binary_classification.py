@@ -59,8 +59,8 @@ def train():
 
     train_datagen = ImageDataGenerator(
         rescale=1. / 255,
-        horizontal_flip = True,
-        vertical_flip = True
+        #horizontal_flip = True,
+        #vertical_flip = True
     )
 
     test_datagen = ImageDataGenerator(rescale=1./255)
