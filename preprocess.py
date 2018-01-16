@@ -3,9 +3,9 @@ import glob
 import os
 import mri_utilities
 import shutil
-import keras_bottleneck_multiclass
 from collections import defaultdict
 import random
+import modality_multiclass_train
 
 # the training files structure section
 # this section can be different than the real deployment folder structure
@@ -33,7 +33,7 @@ def convert_nii_to_jpeg(data_folder, output_folder):
                     print(nii_file)
                     count = mri_utilities.convert_nii_to_jpeg(
                         nii_file, modality_jpeg_folder, count
-                        , shape=(keras_bottleneck_multiclass.img_width, keras_bottleneck_multiclass.img_height))
+                        , shape=(modality_multiclass_train.img_width, modality_multiclass_train.img_height))
 
 def convert_201801_IDH_nii_to_jpeg():
     #all_data_dir = '/media/mingrui/DATA/datasets/201801-IDH-test'
@@ -70,7 +70,7 @@ def convert_201801_IDH_nii_to_jpeg():
             try:
                 count = mri_utilities.convert_nii_to_jpeg(
                     nii_file, modality_dir, count
-                    , shape=(keras_bottleneck_multiclass.img_width, keras_bottleneck_multiclass.img_height))
+                    , shape=(modality_multiclass_train.img_width, modality_multiclass_train.img_height))
             except Exception as e:
                 print(str(e))
 
@@ -91,9 +91,9 @@ def get_modality_file_path(dir, modalities, file_types, modality_dict):
                 modality_dict[modality].append(os.path.join(dir, file))
 
 def create_validation_and_test_set():
-    train_data_dir = keras_bottleneck_multiclass.train_data_dir
-    validation_dir = keras_bottleneck_multiclass.validation_data_dir
-    test_dir = keras_bottleneck_multiclass.test_data_dir
+    train_data_dir = modality_multiclass_train.train_data_dir
+    validation_dir = modality_multiclass_train.validation_data_dir
+    test_dir = modality_multiclass_train.test_data_dir
     modalities = ['CE', 'T1', 'T2', 'DWI', 'ADC']
 
     if os.path.exists(validation_dir):

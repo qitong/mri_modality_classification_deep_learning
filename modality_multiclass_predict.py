@@ -13,12 +13,12 @@ def prediction():
 
     validation_t1 = '/media/mingrui/960EVO/workspace/deep_IDH1/modality_detect/data/validation/t1/*'
     validation_t2 = '/media/mingrui/960EVO/workspace/deep_IDH1/modality_detect/data/validation/t2/*'
-    test_t2 = '/media/mingrui/DATA/datasets/201801-IDH-jpeg-binary-test/CE/*'
-    test_t1 = '/media/mingrui/DATA/datasets/201801-IDH-jpeg-binary-test/T1/*'
+    test_t2 = '/media/mingrui/DATA/datasets/201801-IDH-jpeg-test/ADC/*'
+    test_t1 = '/media/mingrui/DATA/datasets/201801-IDH-jpeg-test/T1/*'
 
     img_list = []
 
-    for filename in glob.glob(test_t1):
+    for filename in glob.glob(test_t2):
         img = image.load_img(filename, target_size=(img_width, img_height))
         x = image.img_to_array(img)
         x *= 1.0 / x.max()
