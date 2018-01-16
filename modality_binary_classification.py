@@ -7,14 +7,15 @@ from keras.preprocessing.image import ImageDataGenerator
 from keras.models import Sequential
 from keras.layers import Conv2D, MaxPooling2D
 from keras.layers import Activation, Dropout, Flatten, Dense
+from keras.callbacks import Callback
 from keras import backend as K
 import keras.optimizers
 import os
 
 img_width, img_height = 224, 224
 
-#data_root_dir = '/media/mingrui/DATA/datasets'
-data_root_dir = '/media/brainteam/hdd1/201801-IDH'
+data_root_dir = '/media/mingrui/DATA/datasets'
+#data_root_dir = '/media/brainteam/hdd1/201801-IDH'
 
 train_data_dir = os.path.join(data_root_dir, '201801-IDH-jpeg-train')
 validation_data_dir = os.path.join(data_root_dir, '201801-IDH-jpeg-validation')
@@ -89,10 +90,19 @@ def train():
         epochs=epochs,
         validation_data=validation_generator,
         validation_steps=nb_validation_samples // batch_size,
+        callbacks=[LearningRateTracker()]
     )
 
     model.save_weights('first_try.h5')
     model.save('model.h5')
+
+class LearningRateTracker(Callback):
+    def on_epoch_end(self, epoch, logs=None):
+        lr = self.model.optimizer.lr
+        decay = self.model.optimizer.decay
+        iterations = self.model.optimizer.iterations
+        lr_with_decay = lr / (1. + decay * K.cast(iterations, K.dtype(decay)))
+        print('learning rate: {}'.format(K.eval(lr_with_decay)))
 
 if __name__ == '__main__':
     print('modality binary classification')
