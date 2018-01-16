@@ -1,5 +1,7 @@
-from tensorflow.python.client import device_lib
-print(device_lib.list_local_devices())
+#from numpy.random import seed
+#seed(1)
+#from tensorflow import set_random_seed
+#set_random_seed(2)
 
 from keras.preprocessing.image import ImageDataGenerator
 from keras.models import Sequential
@@ -47,7 +49,7 @@ def train():
     model.add(Activation('relu'))
     model.add(Dropout(0.5))
     model.add(Dense(1))
-    model.add(Dense(5, activation='sigmoid'))
+    model.add(Dense(5, activation='softmax'))
 
     model.compile(
         loss='categorical_crossentropy',
