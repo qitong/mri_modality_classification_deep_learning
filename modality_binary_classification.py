@@ -13,8 +13,8 @@ import os
 
 img_width, img_height = 224, 224
 
-data_root_dir = '/media/mingrui/DATA/datasets'
-#data_root_dir = '/media/brainteam/hdd1/201801-IDH'
+#data_root_dir = '/media/mingrui/DATA/datasets'
+data_root_dir = '/media/brainteam/hdd1/201801-IDH'
 
 train_data_dir = os.path.join(data_root_dir, '201801-IDH-jpeg-train')
 validation_data_dir = os.path.join(data_root_dir, '201801-IDH-jpeg-validation')
