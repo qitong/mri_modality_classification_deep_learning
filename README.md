@@ -22,16 +22,27 @@ My folder structure:
   |--- DWI
   
 --- jpeg_validation
+
   |--- T1
+  
   |--- T2
+  
   |--- CE
+  
   |--- ADC
+  
   |--- DWI
+  
 --- jpeg_test
+
   |--- T1
+  
   |--- T2
+  
   |--- CE
+  
   |--- ADC
+  
   |--- DWI
   
 I have about 5000 to 6000 training data each. 500 to 600 test and validation each modality.
