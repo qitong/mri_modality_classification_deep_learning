@@ -7,6 +7,10 @@ The solution to this problem:
 Using Keras Tensorflow to classify mri modalities. Currently classifies T1, T2, CE(T1C), DWI, ADC
 Automate!
 
+I have about 5000 to 6000 training data each. 500 to 600 test and validation each modality.
+
+Using this simple model, val_loss: 0.05, val_acc: 0.98
+
 My folder structure:
 
 --- jpeg_train
@@ -45,10 +49,13 @@ My folder structure:
   
   |--- DWI
   
-I have about 5000 to 6000 training data each. 500 to 600 test and validation each modality.
-
-Using this simple model, val_loss: 0.05, val_acc: 0.98
 
 For the actual prediction, the accuracy is much higher.
 Becuase I take multipl slices from the same scan, and for each slice, the prediction score is already high.
 The program will make a decision based on the average of all the slices in a scan to determine modality.
+
+This simple multiclass model is a modification of Kera's binary classification model, found here: https://blog.keras.io/building-powerful-image-classification-models-using-very-little-data.html
+
+More details can be found on my Medium blog here: https://medium.com/@burgermilkshake/the-most-simple-and-basic-multiclass-image-classification-model-in-keras-to-get-you-started-dd69d5ec7d63
+
+# Happy Hacking!
